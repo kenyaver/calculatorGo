@@ -32,12 +32,19 @@ func calculate(x, y int, sign string) int{
 	switch sign{
 	case "+":
 		result = x + y;
+		break;
 	case "-":
 		result = x - y;
+		break;
 	case "*":
 		result = x * y;
+		break;
 	case "/":
 		result = x / y;
+		break;
+	default:
+		result = 101;
+		break;
 	}
 	return result;
 }
@@ -163,19 +170,24 @@ func result(x, y, sign string, flag bool) string{
 
 	xy = calculate(xN, yN, sign);
 
-	if xN != -1 && yN != -1 {
-		if flag{
-			if count, ok := res[xy]; ok{
-				answer = count;
+
+	if xy != 101 {
+		if xN != -1 && yN != -1 {
+			if flag{
+				if count, ok := res[xy]; ok{
+					answer = count;
+				} else {
+					answer = "errora";
+				}
 			} else {
-				answer = "errora";
+				answer = strconv.Itoa(xy);
 			}
 		} else {
-			answer = strconv.Itoa(xy);
+			answer = "errorb";
 		}
 	} else {
-		answer = "errorb";
-	} 
+		answer = "errorc";
+	}
 
 	return answer;
 }
@@ -206,12 +218,14 @@ func main(){
 	rim2 = checkRim(value2);
 
 	if(rim1 == rim2){
-		if res := result(value1, value2, sign, rim1); res != "errora" && res != "errorb" {
+		if res := result(value1, value2, sign, rim1); res != "errora" && res != "errorb" && res != "errorc" {
 			fmt.Println(res);
 		} else if res == "errora" {
 			fmt.Printf("not valid answer\n");
 		} else if res == "errorb" {
 			fmt.Printf("not valid values\n");
+		} else if res == "errorc" {
+			fmt.Printf("not valid operation\n");
 		}
 	} else{
 		fmt.Printf("not valid values\n");
