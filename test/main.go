@@ -22,7 +22,6 @@ func checkRim(value string) bool{
 							"X": "10"};
 
 	if _, ok := rim[value]; ok{
-	// value = count;
 	flag = true;
 	}
 	return flag;
@@ -185,7 +184,8 @@ func main(){
 		
 	var value1, value2 string;
 	// input values with Rim`s numbers support:
-	// input(value1); 
+	
+	// input value1:
 	value1, _ = read.ReadString(' ');
 	value1 = strings.TrimSpace(value1);
 	
@@ -193,7 +193,7 @@ func main(){
 	sign, _ = read.ReadString(' ');
 	sign = strings.TrimSpace(sign);
 	
-	// input(value2);
+	// input value2:
 	value2, _ = read.ReadString('\n');
 	value2 = strings.TrimSpace(value2);
 
@@ -210,7 +210,4 @@ func main(){
 	} else{
 		fmt.Printf("not valid values\n")
 	}
-
-	// value1ToNumber = convert(value1);
-	// value2ToNumber = convert(value2);	
 }
