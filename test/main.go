@@ -201,7 +201,7 @@ func main(){
 	rim1 = checkRim(value1);
 	rim2 = checkRim(value2);
 
-	if(rim1 == rim2){
+	if(rim1 == rim2 && convert(value1) != -1 && convert(value2) != -1){
 		if res := result(value1, value2, sign, rim1); res != "error" {
 			fmt.Println(res);
 		} else {
