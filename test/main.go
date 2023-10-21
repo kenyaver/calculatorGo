@@ -163,15 +163,19 @@ func result(x, y, sign string, flag bool) string{
 
 	xy = calculate(xN, yN, sign);
 
-	if flag{
-		if count, ok := res[xy]; ok{
-			answer = count;
+	if xN != -1 && yN != -1 {
+		if flag{
+			if count, ok := res[xy]; ok{
+				answer = count;
+			} else {
+				answer = "errora";
+			}
 		} else {
-			answer = "error";
+			answer = strconv.Itoa(xy);
 		}
 	} else {
-		answer = strconv.Itoa(xy);
-	}
+		answer = "errorb";
+	} 
 
 	return answer;
 }
@@ -201,13 +205,15 @@ func main(){
 	rim1 = checkRim(value1);
 	rim2 = checkRim(value2);
 
-	if(rim1 == rim2 && convert(value1) != -1 && convert(value2) != -1){
-		if res := result(value1, value2, sign, rim1); res != "error" {
+	if(rim1 == rim2){
+		if res := result(value1, value2, sign, rim1); res != "errora" && res != "errorb" {
 			fmt.Println(res);
-		} else {
-			fmt.Printf("not valid answer\n")
+		} else if res == "errora" {
+			fmt.Printf("not valid answer\n");
+		} else if res == "errorb" {
+			fmt.Printf("not valid values\n");
 		}
 	} else{
-		fmt.Printf("not valid values\n")
+		fmt.Printf("not valid values\n");
 	}
 }
